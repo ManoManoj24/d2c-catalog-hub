@@ -1,0 +1,663 @@
+{
+  "key": "kidswear",
+  "version": 1,
+  "name": "Kidswear Pack",
+  "variationThemeDefault": "SizeColor",
+  "description": "Installable configuration for Indian kidswear catalogs. Statutory and tax values are versioned data in this file, not application constants.",
+  "attributes": [
+    {
+      "key": "style_code",
+      "label": "Style code",
+      "dataType": "text",
+      "scope": "style",
+      "groupKey": "identity",
+      "groupLabel": "Identity",
+      "sortOrder": 10,
+      "required": true,
+      "help": "Stable parent style identifier. Used to match styles on re-import.",
+      "rules": { "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{1,40}$", "maxLength": 41 }
+    },
+    {
+      "key": "style_name",
+      "label": "Style name",
+      "dataType": "text",
+      "scope": "style",
+      "groupKey": "identity",
+      "groupLabel": "Identity",
+      "sortOrder": 20,
+      "required": true,
+      "help": "Customer-facing style title shared by every color and size.",
+      "rules": { "maxLength": 200 }
+    },
+    {
+      "key": "brand",
+      "label": "Brand",
+      "dataType": "text",
+      "scope": "style",
+      "groupKey": "identity",
+      "groupLabel": "Identity",
+      "sortOrder": 30,
+      "required": true,
+      "rules": { "maxLength": 120 }
+    },
+    {
+      "key": "variation_theme",
+      "label": "Variation theme",
+      "dataType": "picklist",
+      "scope": "style",
+      "groupKey": "variation",
+      "groupLabel": "Variation",
+      "sortOrder": 40,
+      "required": true,
+      "help": "SizeColor is the kidswear default. Confirm it against each channel template before publishing.",
+      "rules": { "picklistKey": "variation_theme" }
+    },
+    {
+      "key": "color",
+      "label": "Color",
+      "dataType": "picklist",
+      "scope": "colorway",
+      "groupKey": "variation",
+      "groupLabel": "Variation",
+      "sortOrder": 50,
+      "required": false,
+      "help": "Colorway label. Required when the variation theme includes color.",
+      "rules": { "picklistKey": "color" }
+    },
+    {
+      "key": "color_code",
+      "label": "Color code",
+      "dataType": "text",
+      "scope": "colorway",
+      "groupKey": "variation",
+      "groupLabel": "Variation",
+      "sortOrder": 60,
+      "required": false,
+      "help": "Stable code for the colorway. Media and fabric hang off this code, not off each size.",
+      "rules": { "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,20}$", "maxLength": 21 }
+    },
+    {
+      "key": "size",
+      "label": "Size",
+      "dataType": "picklist",
+      "scope": "sku",
+      "groupKey": "variation",
+      "groupLabel": "Variation",
+      "sortOrder": 70,
+      "required": false,
+      "help": "Sellable size. Required when the variation theme includes size.",
+      "rules": { "picklistKey": "size" }
+    },
+    {
+      "key": "sku",
+      "label": "SKU",
+      "dataType": "text",
+      "scope": "sku",
+      "groupKey": "variation",
+      "groupLabel": "Variation",
+      "sortOrder": 80,
+      "required": true,
+      "help": "Sellable size SKU. Unique inside the catalog. Default match key on import.",
+      "rules": { "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{2,64}$", "maxLength": 65 }
+    },
+    {
+      "key": "barcode",
+      "label": "Barcode",
+      "dataType": "text",
+      "scope": "sku",
+      "groupKey": "variation",
+      "groupLabel": "Variation",
+      "sortOrder": 90,
+      "required": false,
+      "rules": { "pattern": "^[0-9]{8,14}$", "maxLength": 14 }
+    },
+    {
+      "key": "mfg_pack_month_year",
+      "label": "Manufacture or packing month",
+      "dataType": "month_year",
+      "scope": "style",
+      "groupKey": "legal_metrology",
+      "groupLabel": "Legal Metrology",
+      "sortOrder": 100,
+      "required": true,
+      "help": "Month and year of manufacture or packing. Stored as YYYY-MM. MM-YYYY is accepted on import and normalized.",
+      "rules": { "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])$" }
+    },
+    {
+      "key": "net_quantity",
+      "label": "Net quantity",
+      "dataType": "text",
+      "scope": "style",
+      "groupKey": "legal_metrology",
+      "groupLabel": "Legal Metrology",
+      "sortOrder": 110,
+      "required": true,
+      "help": "Examples: 1 N, 2 N set.",
+      "rules": { "pattern": "^[0-9]+\\s*N(\\s+set)?$", "maxLength": 32 }
+    },
+    {
+      "key": "country_of_origin",
+      "label": "Country of origin",
+      "dataType": "picklist",
+      "scope": "style",
+      "groupKey": "business_identity",
+      "groupLabel": "Business identity",
+      "sortOrder": 120,
+      "required": true,
+      "rules": { "picklistKey": "country_of_origin" }
+    },
+    {
+      "key": "manufacturer_name",
+      "label": "Manufacturer name",
+      "dataType": "text",
+      "scope": "style",
+      "groupKey": "business_identity",
+      "groupLabel": "Business identity",
+      "sortOrder": 130,
+      "required": true,
+      "rules": { "maxLength": 200 }
+    },
+    {
+      "key": "manufacturer_address",
+      "label": "Manufacturer address",
+      "dataType": "text",
+      "scope": "style",
+      "groupKey": "business_identity",
+      "groupLabel": "Business identity",
+      "sortOrder": 140,
+      "required": true,
+      "help": "Complete manufacturer address as printed for Legal Metrology.",
+      "rules": { "maxLength": 500 }
+    },
+    {
+      "key": "packer_name",
+      "label": "Packer name",
+      "dataType": "text",
+      "scope": "style",
+      "groupKey": "business_identity",
+      "groupLabel": "Business identity",
+      "sortOrder": 150,
+      "required": true,
+      "rules": { "maxLength": 200 }
+    },
+    {
+      "key": "packer_address",
+      "label": "Packer address",
+      "dataType": "text",
+      "scope": "style",
+      "groupKey": "business_identity",
+      "groupLabel": "Business identity",
+      "sortOrder": 160,
+      "required": true,
+      "rules": { "maxLength": 500 }
+    },
+    {
+      "key": "hsn_code",
+      "label": "HSN code",
+      "dataType": "picklist",
+      "scope": "style",
+      "groupKey": "taxation",
+      "groupLabel": "Taxation",
+      "sortOrder": 170,
+      "required": true,
+      "help": "Allowed codes come from the active tax schedule installed with this pack version.",
+      "rules": { "picklistKey": "hsn_code" }
+    },
+    {
+      "key": "gst_rate",
+      "label": "GST rate",
+      "dataType": "number",
+      "scope": "style",
+      "groupKey": "taxation",
+      "groupLabel": "Taxation",
+      "sortOrder": 180,
+      "required": true,
+      "help": "Percent. Checked against the active tax schedule using MRP as a provisional price basis. This is not a filing opinion.",
+      "rules": { "min": 0, "max": 100 }
+    },
+    {
+      "key": "age_range",
+      "label": "Age range",
+      "dataType": "picklist",
+      "scope": "style",
+      "groupKey": "consumer_sizing",
+      "groupLabel": "Consumer sizing",
+      "sortOrder": 190,
+      "required": true,
+      "help": "Customer-facing age band, such as 2-3Y. Measured chest and length stay on the size SKU.",
+      "rules": { "picklistKey": "age_range" }
+    },
+    {
+      "key": "size_unit",
+      "label": "Measurement unit",
+      "dataType": "picklist",
+      "scope": "style",
+      "groupKey": "consumer_sizing",
+      "groupLabel": "Consumer sizing",
+      "sortOrder": 200,
+      "required": true,
+      "help": "Unit for chest and length. Import keeps the raw number; channels receive the unit explicitly.",
+      "rules": { "picklistKey": "size_unit" }
+    },
+    {
+      "key": "chest",
+      "label": "Chest",
+      "dataType": "measurement",
+      "scope": "sku",
+      "groupKey": "consumer_sizing",
+      "groupLabel": "Consumer sizing",
+      "sortOrder": 210,
+      "required": true,
+      "rules": { "min": 10, "max": 80 }
+    },
+    {
+      "key": "length",
+      "label": "Length",
+      "dataType": "measurement",
+      "scope": "sku",
+      "groupKey": "consumer_sizing",
+      "groupLabel": "Consumer sizing",
+      "sortOrder": 220,
+      "required": true,
+      "rules": { "min": 10, "max": 120 }
+    },
+    {
+      "key": "mrp",
+      "label": "MRP",
+      "dataType": "number",
+      "scope": "sku",
+      "groupKey": "taxation",
+      "groupLabel": "Taxation",
+      "sortOrder": 230,
+      "required": true,
+      "help": "Maximum retail price in INR. The active tax schedule uses it as a provisional sale-value proxy until the price basis is confirmed.",
+      "rules": { "min": 1, "max": 100000 }
+    },
+    {
+      "key": "fabric",
+      "label": "Fabric",
+      "dataType": "picklist",
+      "scope": "colorway",
+      "groupKey": "identity",
+      "groupLabel": "Identity",
+      "sortOrder": 240,
+      "required": true,
+      "rules": { "picklistKey": "fabric" }
+    },
+    {
+      "key": "care",
+      "label": "Care",
+      "dataType": "text",
+      "scope": "colorway",
+      "groupKey": "identity",
+      "groupLabel": "Identity",
+      "sortOrder": 250,
+      "required": false,
+      "rules": { "maxLength": 300 }
+    },
+    {
+      "key": "main_image_url",
+      "label": "Main image URL",
+      "dataType": "url",
+      "scope": "colorway",
+      "groupKey": "media",
+      "groupLabel": "Media",
+      "sortOrder": 260,
+      "required": true,
+      "help": "Checked with HTTP HEAD. Size SKUs inherit this colorway image unless a size-specific override is uploaded.",
+      "rules": { "maxLength": 1000 }
+    },
+    {
+      "key": "alt_image_url",
+      "label": "Alternate image URL",
+      "dataType": "url",
+      "scope": "colorway",
+      "groupKey": "media",
+      "groupLabel": "Media",
+      "sortOrder": 270,
+      "required": false,
+      "rules": { "maxLength": 1000 }
+    }
+  ],
+  "picklists": [
+    {
+      "key": "variation_theme",
+      "values": [
+        { "value": "SizeColor", "label": "Size and color" },
+        { "value": "Size", "label": "Size only" },
+        { "value": "Color", "label": "Color only" }
+      ]
+    },
+    {
+      "key": "color",
+      "values": [
+        { "value": "Sky Blue", "label": "Sky Blue" },
+        { "value": "Coral", "label": "Coral" },
+        { "value": "Navy", "label": "Navy" },
+        { "value": "Ivory", "label": "Ivory" },
+        { "value": "Mustard", "label": "Mustard" },
+        { "value": "Sage", "label": "Sage" },
+        { "value": "Red", "label": "Red" },
+        { "value": "White", "label": "White" },
+        { "value": "Black", "label": "Black" },
+        { "value": "Pink", "label": "Pink" }
+      ]
+    },
+    {
+      "key": "size",
+      "values": [
+        { "value": "0-3M", "label": "0-3M" },
+        { "value": "3-6M", "label": "3-6M" },
+        { "value": "6-12M", "label": "6-12M" },
+        { "value": "12-18M", "label": "12-18M" },
+        { "value": "18-24M", "label": "18-24M" },
+        { "value": "2-3Y", "label": "2-3Y" },
+        { "value": "3-4Y", "label": "3-4Y" },
+        { "value": "4-5Y", "label": "4-5Y" },
+        { "value": "5-6Y", "label": "5-6Y" },
+        { "value": "6-7Y", "label": "6-7Y" },
+        { "value": "7-8Y", "label": "7-8Y" },
+        { "value": "8-9Y", "label": "8-9Y" },
+        { "value": "9-10Y", "label": "9-10Y" },
+        { "value": "11-12Y", "label": "11-12Y" },
+        { "value": "13-14Y", "label": "13-14Y" }
+      ]
+    },
+    {
+      "key": "age_range",
+      "values": [
+        { "value": "0-3M", "label": "0-3M" },
+        { "value": "3-6M", "label": "3-6M" },
+        { "value": "6-12M", "label": "6-12M" },
+        { "value": "12-18M", "label": "12-18M" },
+        { "value": "18-24M", "label": "18-24M" },
+        { "value": "2-3Y", "label": "2-3Y" },
+        { "value": "3-4Y", "label": "3-4Y" },
+        { "value": "4-5Y", "label": "4-5Y" },
+        { "value": "5-6Y", "label": "5-6Y" },
+        { "value": "6-8Y", "label": "6-8Y" },
+        { "value": "8-10Y", "label": "8-10Y" },
+        { "value": "10-12Y", "label": "10-12Y" },
+        { "value": "12-14Y", "label": "12-14Y" }
+      ]
+    },
+    {
+      "key": "size_unit",
+      "values": [
+        { "value": "cm", "label": "Centimetres" },
+        { "value": "in", "label": "Inches" }
+      ]
+    },
+    {
+      "key": "country_of_origin",
+      "values": [
+        { "value": "India", "label": "India" },
+        { "value": "Bangladesh", "label": "Bangladesh" },
+        { "value": "Vietnam", "label": "Vietnam" },
+        { "value": "Sri Lanka", "label": "Sri Lanka" },
+        { "value": "China", "label": "China" },
+        { "value": "Portugal", "label": "Portugal" }
+      ]
+    },
+    {
+      "key": "fabric",
+      "values": [
+        { "value": "Cotton", "label": "Cotton" },
+        { "value": "Organic Cotton", "label": "Organic Cotton" },
+        { "value": "Cotton Blend", "label": "Cotton Blend" },
+        { "value": "Linen", "label": "Linen" },
+        { "value": "Denim", "label": "Denim" },
+        { "value": "Fleece", "label": "Fleece" },
+        { "value": "Jersey", "label": "Jersey" },
+        { "value": "Mulmul", "label": "Mulmul" }
+      ]
+    }
+  ],
+  "relationshipRules": [
+    {
+      "id": "sizecolor-parentage",
+      "when": { "attribute": "variation_theme", "equals": "SizeColor" },
+      "require": ["color", "color_code", "size", "style_code", "sku"]
+    },
+    {
+      "id": "size-parentage",
+      "when": { "attribute": "variation_theme", "equals": "Size" },
+      "require": ["size", "style_code", "sku"]
+    },
+    {
+      "id": "color-parentage",
+      "when": { "attribute": "variation_theme", "equals": "Color" },
+      "require": ["color", "color_code", "style_code", "sku"]
+    }
+  ],
+  "taxSchedules": [
+    {
+      "id": "in-gst-apparel-architecture-draft-2026-09-29",
+      "activation": "retained",
+      "effectiveFrom": null,
+      "reviewStatus": "superseded_unverified",
+      "priceBasis": "mrp_proxy_pending_confirmation",
+      "disclaimer": "Unverified candidate copied from the 29 Sep 2026 architecture draft: 5% up to and including ₹1,000 and 12% above. Not installed as the active schedule. Do not file from this version.",
+      "sources": [
+        {
+          "title": "PIM-lite architecture decision draft, 29 September 2026",
+          "url": "docs/architecture-source.md"
+        }
+      ],
+      "hsn": [
+        {
+          "code": "6111",
+          "label": "Babies' garments, knitted or crocheted",
+          "ageBand": "baby",
+          "construction": "knitted",
+          "rateRules": [
+            { "maxSaleValueInrInclusive": 1000, "ratePercent": 5, "note": "Architecture draft candidate." },
+            { "maxSaleValueInrInclusive": null, "ratePercent": 12, "note": "Architecture draft candidate." }
+          ]
+        },
+        {
+          "code": "6209",
+          "label": "Babies' garments, not knitted or crocheted",
+          "ageBand": "baby",
+          "construction": "woven",
+          "rateRules": [
+            { "maxSaleValueInrInclusive": 1000, "ratePercent": 5, "note": "Architecture draft candidate." },
+            { "maxSaleValueInrInclusive": null, "ratePercent": 12, "note": "Architecture draft candidate." }
+          ]
+        },
+        {
+          "code": "6104",
+          "label": "Girls' suits and ensembles, knitted or crocheted",
+          "ageBand": "child",
+          "construction": "knitted",
+          "rateRules": [
+            { "maxSaleValueInrInclusive": 1000, "ratePercent": 5, "note": "Architecture draft candidate." },
+            { "maxSaleValueInrInclusive": null, "ratePercent": 12, "note": "Architecture draft candidate." }
+          ]
+        },
+        {
+          "code": "6204",
+          "label": "Girls' suits and ensembles, not knitted or crocheted",
+          "ageBand": "child",
+          "construction": "woven",
+          "rateRules": [
+            { "maxSaleValueInrInclusive": 1000, "ratePercent": 5, "note": "Architecture draft candidate." },
+            { "maxSaleValueInrInclusive": null, "ratePercent": 12, "note": "Architecture draft candidate." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "in-gst-apparel-candidate-2025-09-22",
+      "activation": "active",
+      "effectiveFrom": "2025-09-22",
+      "reviewStatus": "candidate",
+      "priceBasis": "mrp_proxy_pending_confirmation",
+      "disclaimer": "Build-time candidate reviewed on 6 Oct 2026 against secondary summaries of CBIC GST 2.0 (effective 22 Sep 2025). Not legal advice and not a substitute for the CBIC rate notification. Baby headings are described by those summaries as 5% with no value cap. Other apparel headings are described as 5% at a sale value up to ₹2,500 per piece and 18% above. Boys' headings 6103 and 6203 were added as sibling candidates because a kidswear catalog includes boys; the architecture draft named 6104 and 6204 explicitly. Confirm classification, rate, price basis, and marketplace rules before production use.",
+      "sources": [
+        {
+          "title": "Mark IT Solutions — HSN Chapter 61 GST rates, citing CBIC GST 2.0",
+          "url": "https://www.markitsolutions.in/hsn/chapter-61"
+        },
+        {
+          "title": "Tally Solutions — HSN 6204 GST rate (GST 2.0, 22 Sep 2025)",
+          "url": "https://tallysolutions.com/gst/hsn-code-6204-gst-rate-product-details/"
+        },
+        {
+          "title": "DisyTax — HSN 61 knitted apparel GST summary",
+          "url": "https://disytax.com/hsn-61-apparel-knitted-gst-rate/"
+        }
+      ],
+      "hsn": [
+        {
+          "code": "6111",
+          "label": "Babies' garments and clothing accessories, knitted or crocheted",
+          "ageBand": "baby",
+          "construction": "knitted",
+          "rateRules": [
+            {
+              "maxSaleValueInrInclusive": null,
+              "ratePercent": 5,
+              "note": "Secondary sources describe baby garments at 5% with no value cap. Confirm against the CBIC notification."
+            }
+          ]
+        },
+        {
+          "code": "6209",
+          "label": "Babies' garments and clothing accessories, not knitted or crocheted",
+          "ageBand": "baby",
+          "construction": "woven",
+          "rateRules": [
+            {
+              "maxSaleValueInrInclusive": null,
+              "ratePercent": 5,
+              "note": "Secondary sources describe baby garments at 5% with no value cap. Confirm against the CBIC notification."
+            }
+          ]
+        },
+        {
+          "code": "6103",
+          "label": "Boys' suits, ensembles, jackets, and shorts, knitted or crocheted",
+          "ageBand": "child",
+          "construction": "knitted",
+          "rateRules": [
+            {
+              "maxSaleValueInrInclusive": 2500,
+              "ratePercent": 5,
+              "note": "Candidate sibling heading. Threshold described by secondary GST 2.0 summaries. Confirm classification."
+            },
+            {
+              "maxSaleValueInrInclusive": null,
+              "ratePercent": 18,
+              "note": "Candidate sibling heading above the described threshold."
+            }
+          ]
+        },
+        {
+          "code": "6203",
+          "label": "Boys' suits, ensembles, jackets, and shorts, not knitted or crocheted",
+          "ageBand": "child",
+          "construction": "woven",
+          "rateRules": [
+            {
+              "maxSaleValueInrInclusive": 2500,
+              "ratePercent": 5,
+              "note": "Candidate sibling heading. Threshold described by secondary GST 2.0 summaries. Confirm classification."
+            },
+            {
+              "maxSaleValueInrInclusive": null,
+              "ratePercent": 18,
+              "note": "Candidate sibling heading above the described threshold."
+            }
+          ]
+        },
+        {
+          "code": "6104",
+          "label": "Girls' suits, ensembles, dresses, and shorts, knitted or crocheted",
+          "ageBand": "child",
+          "construction": "knitted",
+          "rateRules": [
+            {
+              "maxSaleValueInrInclusive": 2500,
+              "ratePercent": 5,
+              "note": "Named in the architecture draft. Rate and threshold replaced by the GST 2.0 candidate."
+            },
+            {
+              "maxSaleValueInrInclusive": null,
+              "ratePercent": 18,
+              "note": "Above the described ₹2,500 threshold."
+            }
+          ]
+        },
+        {
+          "code": "6204",
+          "label": "Girls' suits, ensembles, dresses, and shorts, not knitted or crocheted",
+          "ageBand": "child",
+          "construction": "woven",
+          "rateRules": [
+            {
+              "maxSaleValueInrInclusive": 2500,
+              "ratePercent": 5,
+              "note": "Named in the architecture draft. Rate and threshold replaced by the GST 2.0 candidate."
+            },
+            {
+              "maxSaleValueInrInclusive": null,
+              "ratePercent": 18,
+              "note": "Above the described ₹2,500 threshold."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "channels": [
+    {
+      "key": "generic_marketplace",
+      "name": "Generic marketplace file",
+      "format": "xlsx",
+      "templateFile": "templates/generic-kidswear-v1.xlsx",
+      "dataSheet": "Data",
+      "headerRow": 3,
+      "insertionRow": 4,
+      "columns": [
+        { "header": "Row Type", "attribute": "row_type", "scope": "derived", "required": true, "derived": "row_type" },
+        { "header": "Style Code", "attribute": "style_code", "scope": "style", "required": true },
+        { "header": "Product Name", "attribute": "style_name", "scope": "style", "required": true },
+        { "header": "Brand", "attribute": "brand", "scope": "style", "required": true },
+        { "header": "Parent Style", "attribute": "parent_style", "scope": "derived", "required": false, "derived": "parent_style" },
+        { "header": "Color", "attribute": "color", "scope": "colorway", "required": true },
+        { "header": "Size", "attribute": "size", "scope": "sku", "required": true },
+        { "header": "SKU", "attribute": "sku", "scope": "sku", "required": true },
+        { "header": "Barcode", "attribute": "barcode", "scope": "sku", "required": false },
+        { "header": "MRP", "attribute": "mrp", "scope": "sku", "required": true },
+        { "header": "HSN", "attribute": "hsn_code", "scope": "style", "required": true },
+        { "header": "GST Percent", "attribute": "gst_rate", "scope": "style", "required": true },
+        { "header": "Age Range", "attribute": "age_range", "scope": "style", "required": true },
+        { "header": "Net Quantity", "attribute": "net_quantity", "scope": "style", "required": true },
+        { "header": "Country of Origin", "attribute": "country_of_origin", "scope": "style", "required": true },
+        { "header": "Mfg Pack", "attribute": "mfg_pack_month_year", "scope": "style", "required": true },
+        { "header": "Main Image", "attribute": "main_image_url", "scope": "colorway", "required": true },
+        { "header": "Fabric", "attribute": "fabric", "scope": "colorway", "required": false }
+      ]
+    }
+  ],
+  "media": {
+    "scopes": ["style", "colorway", "sku"],
+    "inheritance": "Size SKUs inherit colorway media. A SKU-scoped asset overrides that role only.",
+    "allowedContentTypes": ["image/jpeg", "image/png", "image/webp"]
+  },
+  "limits": {
+    "storageCapBytes": 104857600,
+    "maxUploadBytes": 5242880,
+    "maxImportBytes": 20971520,
+    "maxImportRows": 5000,
+    "maxCellLength": 2000,
+    "allowedImageTypes": ["image/jpeg", "image/png", "image/webp"],
+    "allowedImportTypes": [
+      "text/csv",
+      "application/csv",
+      "application/vnd.ms-excel",
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    ]
+  }
+}
